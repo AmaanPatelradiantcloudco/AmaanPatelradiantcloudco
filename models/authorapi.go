@@ -24,7 +24,7 @@ type Author struct {
 	Description string `json:"description"`
 }
 
-func CreateAuthor(w http.ResponseWriter, r *http.Request) {
+func CreateAuthorapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var author Author
 	json.NewDecoder(r.Body).Decode(&author)
@@ -101,14 +101,14 @@ func CreateAuthor(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func GetAuthors(w http.ResponseWriter, r *http.Request) {
+func GetAuthorsapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applciation/json")
 	var authors []Author
 	DB.Find(&authors)
 	json.NewEncoder(w).Encode(authors)
 }
 
-func GetAuthor(w http.ResponseWriter, r *http.Request) {
+func GetAuthorapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applcation/json")
 	params := mux.Vars(r)
 	var author Author
@@ -116,7 +116,7 @@ func GetAuthor(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(author)
 }
 
-func UpdateAuthor(w http.ResponseWriter, r *http.Request) {
+func UpdateAuthorapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applcation/json")
 	var author Author
 	params := mux.Vars(r)
@@ -126,7 +126,7 @@ func UpdateAuthor(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(author)
 }
 
-func DeleteAuthor(w http.ResponseWriter, r *http.Request) {
+func DeleteAuthorapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applcation/json")
 	params := mux.Vars(r)
 	var author Author
@@ -157,7 +157,7 @@ func DeleteAuthor(w http.ResponseWriter, r *http.Request) {
 // 	}
 // 	return nil
 // }
-func CreateAuthor2(w http.ResponseWriter, r *http.Request) {
+func CreateAuthor2api(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var author Author
 	json.NewDecoder(r.Body).Decode(&author)

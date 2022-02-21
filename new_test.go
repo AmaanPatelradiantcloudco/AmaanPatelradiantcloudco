@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"restapi/models"
 	"testing"
 )
 
@@ -26,7 +27,7 @@ func TestAuthorValidations(t *testing.T) { // A test function name starts with t
 
 	for _, value := range TestValues {
 
-		var testAuthor Author // A new Author type variable
+		var testAuthor models.Author // A new Author type variable
 
 		err := json.Unmarshal([]byte(value), &testAuthor)
 		if err != nil {
@@ -34,7 +35,7 @@ func TestAuthorValidations(t *testing.T) { // A test function name starts with t
 		}
 
 		// Testing validations :
-		err = testAuthor.Validate()
+		err = testAuthor.GetAuthors()
 		if err != nil {
 			t.Errorf("TEST (VALIDATION) FAILED : %v", err.Error())
 		}

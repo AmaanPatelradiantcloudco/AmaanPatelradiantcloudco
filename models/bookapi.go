@@ -59,7 +59,7 @@ type CreateBookRequest struct {
 // @Description Creates Books & Returns a Book based on the request
 // @Param request body _Book true "Create Book Request"
 // @Router /books/create [post]
-func CreateBook(w http.ResponseWriter, r *http.Request) {
+func CreateBookapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var book Book
 	json.NewDecoder(r.Body).Decode(&book)
@@ -70,7 +70,7 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 // @Title Get All Book
 // @Description Get All Books based on the request
 // @Router /books [get]
-func GetBooks(w http.ResponseWriter, r *http.Request) {
+func GetBooksapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applciation/json")
 	var books []Book
 	DB.Find(&books)
@@ -81,7 +81,7 @@ func GetBooks(w http.ResponseWriter, r *http.Request) {
 // @Description Get Books by ID based on the request
 // @Param id path int true "Get Books by ID Request"
 // @Router /books/{id} [get]
-func GetBook(w http.ResponseWriter, r *http.Request) {
+func GetBookapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	var book Book
@@ -94,7 +94,7 @@ func GetBook(w http.ResponseWriter, r *http.Request) {
 // @Param request body _Book true "Update Book Request"
 // @Param id path int true "Update Book Request"
 // @Router /books/{id} [patch]
-func UpdateBook(w http.ResponseWriter, r *http.Request) {
+func UpdateBookapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	var book Book
@@ -108,7 +108,7 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 // @Description Delete Books based on the request
 // @Param id path int true "Delete Book Request"
 // @Router /books/{id} [delete]
-func DeleteBook(w http.ResponseWriter, r *http.Request) {
+func DeleteBookapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	var book Book

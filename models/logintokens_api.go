@@ -57,7 +57,7 @@ func HashPassword(Password string) (string, error) {
 	return string(bytes), err
 }
 
-func CreateUser(w http.ResponseWriter, r *http.Request) {
+func CreateUserapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var user User
 	json.NewDecoder(r.Body).Decode(&user)
@@ -91,7 +91,7 @@ func CheckPasswordHash(Password, hash string) bool {
 	return err == nil
 }
 
-func Login(w http.ResponseWriter, r *http.Request) {
+func Loginapi(w http.ResponseWriter, r *http.Request) {
 	var credentials Credentials
 	err := json.NewDecoder(r.Body).Decode(&credentials)
 	if err != nil {
@@ -167,7 +167,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 // }
 
-func Home(w http.ResponseWriter, r *http.Request) {
+func Homeapi(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("token")
 	if err != nil {
 		//if no cookie i.e unauthorised access, we want a cookie with a token
