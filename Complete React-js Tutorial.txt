@@ -1,0 +1,33 @@
+     React js:-
+    react js is a javascript library or framework which is used to create single page applications which gives a better user interface experience
+    and a better ui/uc experience by getting the things done on the single page like when you click on the buttons the page won't reload it
+    will show the features on the same page without reloading
+     JSX:-javascript syntax extension is a javascript syntax extension used in react js and in html you can divide you webpage into 
+     components.
+     Breaking web application into component will help to manage everything very easily instead of getting everything in one page.
+     we can transfer the data from one page to another in the form of props.
+     Routing:- we can install the react router dom which will help us to go from one page to another without reloading it,routing simply does for 
+     eg.www.codewitharry.com and we want to go to videos section which is www.codewithharry.com/videos so it will help us to go their 
+     without reloading and taking time.
+      Node or npm:-to bring the components of javascript out of web application into your computer we use node js or npm for that.javascript
+       was prooved as a strong language
+      Npx:-npx will download the packages written by different people into your device.will download the packages for one time.
+      difference between npm and npx is if you download the packages from npm it will be downloaded for permanent and if you download the 
+     package from npx you have to download the packages once.for eg. if you are bringing the plumber at your home and you have to send him after 
+    the work so that is npx and npm is like bringing the plumber at your home and letting him stay for lifetime at your home.
+    COMMAND FOR REACT APP:
+     npx create-react-app (react app name)
+     npx create-react-app todos   // here we are creating the todos application so the name of the react app is todos
+     this will automatically generate a react app and you can start the react app by using npm start which will start your localhost of your react
+    app.
+    First we have a favicon.ico which is nothing but an icon of react app which we can see on the top of the webpage.
+    We have two images under the react app which are in png format which have react symbol images after that we have an index.html page 
+    which have js link to it so that we can se the changes happening after linking javascript to it
+    <div className>--This over here class Name is nothing but javascript syntax extension 
+    ReactDOM render have </app> which is a component and the whole code is written in app.js 
+    1)Classname was given for javascript as to avoid the conflict that could be faced under html and js for class since class
+    term under html is used for creating a class and here className is used for jsx
+    2)<div>{12+45}</div>-here the script or the piece of code written under a div tag which is under opening and closing of 
+     curly braces is the js code so whatever we write over here will get reflected under the webpage.
+   3) 
+    
