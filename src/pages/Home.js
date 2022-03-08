@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 const Home = () => {
   useEffect(() => {
     if (!localStorage.getItem('email', 'pwd')) {

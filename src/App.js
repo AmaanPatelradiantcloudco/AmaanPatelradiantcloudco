@@ -32,11 +32,11 @@ function App() {
                         {/* <Route path="/" render={routeProps => (<Home routeProps={routeProps} animate={true} />)}/> */}
                         <Route path="/login/" render={routeProps => (<Login routeProps={routeProps} animate={true} />)}/>
                         <Route path="/register/" render={routeProps => (<Register routeProps={routeProps} animate={true} />)}/>
-                        <Route path="/addauthor/" render={routeProps => (<AddAuthor routeProps={routeProps} animate={true} />)}/>
+                        <Route path="/addNewauthor/" render={routeProps => (<AddAuthor routeProps={routeProps} animate={true} />)}/>
                         <Route path="/authorlist/" render={routeProps => (<AuthorList routeProps={routeProps} animate={true} />)}/>
                         <Route path="/updateauthor/:id" render={routeProps => (<UpdateAuthor routeProps={routeProps} animate={true} />)}/>
-                        <Route path="/addbook/" render={routeProps => (<AddBook routeProps={routeProps} animate={true} />)}/>
-                        <Route path="/booklist/" render={routeProps => (<BookList routeProps={routeProps} animate={true} />)}/>
+                        <Route path="/addNewbook/" render={routeProps => (<AddBook routeProps={routeProps} animate={true} />)}/>
+                        <Route path="/bookslist/" render={routeProps => (<BookList routeProps={routeProps} animate={true} />)}/>
                         <Route path="/updatebook/:id" render={routeProps => (<UpdateBook routeProps={routeProps} animate={true} />)}/>
                         </Route>
 

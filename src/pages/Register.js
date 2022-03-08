@@ -1,4 +1,4 @@
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 import { useState, useEffect } from 'react';
 function Register() {
     useEffect(() =>{
@@ -23,11 +23,11 @@ function Register() {
         localStorage.setItem("name",username )
         localStorage.setItem("pwd",password )
         localStorage.setItem("email",email )
-        window.location.href="/addBook"
+        window.location.href="/addNewBook"
         setRedirect(item);
         console.log(redirect)
         if (redirect) {
-            return <redirect to="/addbook"/>
+            return <redirect to="/addNewbook"/>
         }
         if (response.status === 200) {
           console.log("success")
@@ -44,10 +44,10 @@ function Register() {
             <Nav />
         <form>
             <div className="col-sm-6 offset-sm-3">
-            <h1 className="h3 mb-3 fw-normal">Please Register</h1>
-            <input type="text" value={username} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Name" />
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email address" />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Password" />
+            <h1 className="h3 mb-3 fw-normal font-size:30px">Please Register</h1>
+            <input type="text" value={username} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Name of User" />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email address of User" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Password of User" />
             <button onClick={signUp} className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
             </div>
         </form>

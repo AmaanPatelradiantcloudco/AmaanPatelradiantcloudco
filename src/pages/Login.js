@@ -1,4 +1,4 @@
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 import { useState, useEffect } from "react";
 
 function Login() {
@@ -9,7 +9,7 @@ function Login() {
 
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
-            return <redirect to="/addbook"/>
+            return <redirect to="/addNewbook"/>
         }
     }, [])
 
@@ -25,11 +25,11 @@ function Login() {
             response =  response.json()
             localStorage.setItem("pwd",password )
             localStorage.setItem("email",email )
-            window.location.href="/addBook"
+            window.location.href="/addNewBook"
             setRedirect(item);
             console.log(redirect)
             if (redirect) {
-                return <redirect to="/addbook"/>
+                return <redirect to="/addNewbook"/>
             }
             if (response.status === 200) {
               console.log("success")

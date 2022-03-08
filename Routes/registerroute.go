@@ -1,19 +1,14 @@
 package Routes
 
 import (
-	"restapi/Database"
 	"restapi/models"
 
 	"github.com/gorilla/mux"
 )
 
-func initializeRouter() {
+func registerroute() {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/register", models.CreateUserapi).Methods("POST")
+	r.HandleFunc("/register", models.CreateNewUserapi).Methods("POST")
 
-}
-func main_api() {
-	Database.InitialMigration()
-	initializeRouter()
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 function Protected() {
     useEffect(() => {
         if (!localStorage.getItem('user-info')) {

@@ -1,11 +1,11 @@
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 import { useState } from 'react'
 
-function AddAuthor() {
+function AddNewAuthor() {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
 
-    async function addAuthor() {
+    async function addnewAuthor() {
         let item = { name, description }
         console.warn()
 
@@ -27,11 +27,11 @@ function AddAuthor() {
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="name" />
                 <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className="form-control" placeholder="description" />
                 <br></br>
-                <button onClick={addAuthor} className="w-100 btn btn-lg btn-primary">Add Author</button>
+                <button onClick={addnewAuthor} className="w-100 btn btn-lg btn-primary">Add Author</button>
 
             </div>
         </div>
     )
 }
 
-export default AddAuthor
+export default AddNewAuthor

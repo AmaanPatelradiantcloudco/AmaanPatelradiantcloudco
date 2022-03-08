@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func initializeRouter() {
+func booksroute() {
 	r := mux.NewRouter()
 	r.HandleFunc("/books/create", models.CreateBookapi).Methods("POST")
 	r.HandleFunc("/books", models.GetBooksapi).Methods("GET")

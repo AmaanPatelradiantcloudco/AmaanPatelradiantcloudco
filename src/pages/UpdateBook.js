@@ -1,4 +1,4 @@
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 import {withRouter} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { NavItem } from "react-bootstrap";

@@ -1,17 +1,17 @@
 package models
 
 import (
-	"encoding/json"
-	"fmt"
-	"net/http"
+	"encoding/json" //package encoding/json
+	"fmt"           //package fmt this is format package which is used for print statements
+	"net/http"      //this package is for http request specifically GET request
 
-	"github.com/go-playground/validator/v10"
-	"github.com/gorilla/mux"
-	"gorm.io/gorm"
+	"github.com/go-playground/validator/v10" //used for implementing value validations for struct
+	"github.com/gorilla/mux"                 //this is used for implementing request router and for matching incoming request to their respective handler
+	"gorm.io/gorm"                           //gorm provides crud operation and can also be used for initial migration and  creation of database schema
 )
 
-var DB *gorm.DB
-var err error
+var DB *gorm.DB //we are declaring two variable of db over here so that we can access them here
+var err error   //same goes for this one too
 
 // var validate = validator.New()
 /*type Author2 struct {
@@ -22,18 +22,18 @@ var err error
 	popularbooks string `json "popularbooks"`
 }*/
 
-type Author struct {
+type Author struct { //we are declaring the struct which is similar to classes in languages
 	gorm.Model
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	Name        string `json:"name"`        //for input we are taking name we are declaring in the json format
+	Description string `json:"description"` ///for input we are taking description we are declaring in the json format
 }
 
-var validate = validator.New()
+var validate = validator.New() //here  we are declaring the var validate and creating an instance validator.New()
 
-func (author *Author) Validate() error {
-	err := validate.Struct(author)
+func (author *Author) Validate() error { //we are declaring the func author which has author variable and then Author struct and then calling Validate()
+	err := validate.Struct(author) //here we are declaring and initializing err which is var validate.Struct and author variable as argument
 	if err != nil {
-		if _, ok := err.(*validator.InvalidValidationError); ok {
+		if _, ok := err.(*validator.InvalidValidationError); ok { //if condition if there is invalidation error is there returns err
 			return err
 		}
 		return err
@@ -41,11 +41,11 @@ func (author *Author) Validate() error {
 	return nil
 }
 
-func CreateAuthorapi(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var author Author
-	json.NewDecoder(r.Body).Decode(&author)
-	var check_author Author
+func CreateNewAuthorapi(w http.ResponseWriter, r *http.Request) { //simple reesponse writer
+	w.Header().Set("Content-Type", "application/json") //we are setting the header which have content-type,application/json
+	var author Author                                  //declaring variabble author over here and then the struct Author
+	json.NewDecoder(r.Body).Decode(&author)            //we are giving json decoder, r is for http request then we are decoding the variable author
+	var check_author Author                            //new variable check_author
 	DB.Table("authors").Where("name = ?", author.Name).Scan(&check_author)
 	//DB.Table("users").Where("username=?, password=?",user.username, user.password).
 	fmt.Printf("%#v\n", check_author)
@@ -118,28 +118,28 @@ func CreateAuthorapi(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func GetAuthorsapi(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "applciation/json")
-	var authors []Author
-	DB.Find(&authors)
-	json.NewEncoder(w).Encode(authors)
+func GetAllAuthorsapi(w http.ResponseWriter, r *http.Request) { //simple response writer
+	w.Header().Set("Content-Type", "applciation/json") //setting the headers
+	var authors []Author                               //var authors for getting all the authors
+	DB.Find(&authors)                                  //here we are using the variable DB which is there in database file and we are finding the author in database using find which is again inbuilt and there in finisher_api.go
+	json.NewEncoder(w).Encode(authors)                 //encoding the variable author
 }
 
 func GetAuthorapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applcation/json")
-	params := mux.Vars(r)
-	var author Author
-	DB.First(&author, params["id"])
-	json.NewEncoder(w).Encode(author)
+	params := mux.Vars(r)             //we have declared var params,and we have initialize mux router which can be
+	var author Author                 //done by using go get (package name)
+	DB.First(&author, params["id"])   //we are using the variable author over here and then for the params since we are
+	json.NewEncoder(w).Encode(author) //declaring the trying to get single author using id
 }
 
 func UpdateAuthorapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "applcation/json")
 	var author Author
-	params := mux.Vars(r)
-	DB.First(&author, params["id"])
-	json.NewDecoder(r.Body).Decode(&author)
-	DB.Save(&author)
+	params := mux.Vars(r)                   //declarings the params variable since we need to pass the param which is id over here
+	DB.First(&author, params["id"])         //we are using db.first so it goes to author variable and the id of the author
+	json.NewDecoder(r.Body).Decode(&author) //decoding the author
+	DB.Save(&author)                        //saving the new author that is updated and posted using post method
 	json.NewEncoder(w).Encode(author)
 }
 

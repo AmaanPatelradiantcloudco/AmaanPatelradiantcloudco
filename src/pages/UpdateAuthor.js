@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { withRouter } from 'react-router-dom';
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 
 function UpdateAuthor(props) {
     const [data, setData] = useState([])

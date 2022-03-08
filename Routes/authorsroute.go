@@ -1,24 +1,19 @@
 package Routes
 
 import (
-	"restapi/Database"
 	"restapi/models"
 
 	"github.com/gorilla/mux"
 )
 
-func initializeRouter() {
+func authorsroute() {
 	r := mux.NewRouter()
 
 	//  //For Authors
-	r.HandleFunc("/authors", models.GetAuthorsapi).Methods("GET")
-	r.HandleFunc("/authors/{id}", models.GetAuthorapi).Methods("GET")
-	r.HandleFunc("/authors/{id}", models.DeleteAuthorapi).Methods("DELETE")
-	r.HandleFunc("/authors/{id}", models.UpdateAuthorapi).Methods("POST")
-	r.HandleFunc("/authors/create", models.CreateAuthorapi).Methods("POST")
+	r.HandleFunc("/authors", models.GetAllAuthorsapi).Methods("GET")           //for getting all the authors
+	r.HandleFunc("/authors/{id}", models.GetAuthorapi).Methods("GET")          //getting author with id
+	r.HandleFunc("/authors/{id}", models.DeleteAuthorapi).Methods("DELETE")    //deleting the existing authors
+	r.HandleFunc("/authors/{id}", models.UpdateAuthorapi).Methods("POST")      //update the author which already existed
+	r.HandleFunc("/authors/create", models.CreateNewAuthorapi).Methods("POST") ///for creating new author using the method post
 
-}
-func main_api() {
-	Database.InitialMigration()
-	initializeRouter()
 }

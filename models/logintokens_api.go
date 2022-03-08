@@ -1,15 +1,16 @@
 package models
 
 import (
-	"encoding/json"
-	"fmt"
-	"net/http"
-	"time"
+	"encoding/json" //for encoding and decoding package
+	"fmt"           //for print statements
+	"net/http"      //for getting GET request
+	"time"          //provides fucnctionality of time
 
-	"golang.org/x/crypto/bcrypt"
+	"github.com/gorilla/mux"     //for matching request
+	"golang.org/x/crypto/bcrypt" //package for operations of encrypting etc.
 
-	"github.com/dgrijalva/jwt-go"
-	"gorm.io/gorm"
+	"github.com/dgrijalva/jwt-go" //package for jwt-token
+	"gorm.io/gorm"                //for crud operations and initialmigration
 )
 
 //used in jwt to sign our token
@@ -40,6 +41,12 @@ type User struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
+type Usernew struct {
+	gorm.Model
+	Email    string `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
 
 func GetUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -48,16 +55,22 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(users)
 }
-
+func GetUserseparate(w http.ResponseWriter, r *http.Request) { //func is created and we have response writer
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)           //declaring and initializing the params as we did for other funcs
+	var user User                   //declaring variable user and then struct User
+	DB.First(&user, params["id"])   //here for db we are passing the var name and id
+	json.NewEncoder(w).Encode(user) //we are here encoding the variable user
+}
 func HashPassword(Password string) (string, error) {
-	bytes, err := bcrypt.GenerateFromPassword([]byte(Password), bcrypt.DefaultCost)
+	bytes, err := bcrypt.GenerateFromPassword([]byte(Password), bcrypt.DefaultCost) //generatefrompasswd is from bcrypt.go,variable passwd
 	if err != nil {
 		return "", fmt.Errorf("unable to genereate hash: %w", err)
 	}
 	return string(bytes), err
 }
 
-func CreateUserapi(w http.ResponseWriter, r *http.Request) {
+func CreateNewUserapi(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var user User
 	json.NewDecoder(r.Body).Decode(&user)
@@ -66,7 +79,7 @@ func CreateUserapi(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("%#v\n", check_user)
 	//func GenerateFromPassword(check_user.password []byte, cost int) ([]byte, error)
 	if check_user.Username == "" {
-		passd := user.Password
+		passd := user.Password //declaring passd variable,user variable and then calling password
 		//	user.Password := models.HashPassword()
 		hash, hasherror := HashPassword(passd)
 		if hasherror != nil {
@@ -75,10 +88,10 @@ func CreateUserapi(w http.ResponseWriter, r *http.Request) {
 		}
 
 		user.Password = hash
-		fmt.Println("Password:", passd)
-		fmt.Println("Hash:    ", hash)
+		fmt.Println("Password:", passd) //print for password
+		fmt.Println("Hash:    ", hash)  //print for hash
 		DB.Create(&user)
-		fmt.Fprintln(w, "new user created")
+		fmt.Fprintln(w, "new user created") //print statement
 		json.NewEncoder(w).Encode(user)
 	} else {
 		fmt.Fprintln(w, "user already exist")

@@ -1,7 +1,9 @@
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 import React, { useState, useEffect } from "react";
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
 function AuthorList(){
@@ -44,7 +46,11 @@ async function getData(){
                         <tr>
                             <td>{item.name}</td>
                             <td>{item.description}</td>
-                            <td><span onClick={() =>deleteOperation(item.ID) } className="delete">Delete</span></td>
+                            <td><span onClick={() =>deleteOperation(item.ID) } className="delete">Delete</span><FontAwesomeIcon icon="fa-solid fa-circle-trash" /></td>
+                            
+ 
+ 
+                         
                             <td>
                                 <Link to ={"updateauthor/"+item.ID}>
                                 <span  className="update">Update</span>

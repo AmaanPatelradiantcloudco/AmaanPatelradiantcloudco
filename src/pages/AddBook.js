@@ -1,16 +1,15 @@
-import Nav from "../components/Nav";
+import Nav from "../components/home";
 import { useState } from 'react'
 
-function AddBook() {
+function AddNewBook() {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
 
-    async function addBook() {
+    async function addNewBooks() {         //we are defining the addNewBooks func 
+                                           //here and we are calling it down in the button {addNewBooks}
         let item = { name, description }
         console.warn(name, description)
-    //   const formData = FormData();
-    //   formData.append('name',name);
-    //   formData.append('description',description);
+  
         
 
         let result = await fetch("http://localhost:8080/books/create", {
@@ -26,16 +25,16 @@ function AddBook() {
     return (
         <div>
             <Nav />
-            <div className="col-sm-6 offset-sm-3">
+            <div className="col-sm-6 offset-sm-3 h-1">
                 <h1>Add Book</h1>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="name" />
                 <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className="form-control" placeholder="description" />
                 <br></br>
-                <button onClick={addBook} className="w-100 btn btn-lg btn-primary">Add Book</button>
+                <button onClick={addNewBooks} className="w-100 btn btn-lg btn-primary">Add New Book</button>
 
             </div>
         </div>
     )
 }
 
-export default AddBook
+export default AddNewBook
