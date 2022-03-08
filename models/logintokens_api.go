@@ -17,9 +17,9 @@ import (
 var jwtKey = []byte("secret_key")
 
 var people = map[string]string{
-	"user1":       "password1",
-	"user2":       "password2",
-	"Moinqureshi": "12345",
+	"user1":      "password1",
+	"user2":      "password2",
+	"amaanpatel": "12345",
 }
 
 //for passing username and pw from the api
