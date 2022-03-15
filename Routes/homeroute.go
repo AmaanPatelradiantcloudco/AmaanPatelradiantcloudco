@@ -9,6 +9,6 @@ import (
 func homeroute() {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/home", models.Homeapi).Methods("GET")
+	r.HandleFunc("/home", models.HomePageapi).Methods("GET")
 
 }

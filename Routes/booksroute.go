@@ -8,9 +8,9 @@ import (
 
 func booksroute() {
 	r := mux.NewRouter()
-	r.HandleFunc("/books/create", models.CreateBookapi).Methods("POST")
-	r.HandleFunc("/books", models.GetBooksapi).Methods("GET")
-	r.HandleFunc("/books/{id}", models.GetBookapi).Methods("GET")
-	r.HandleFunc("/books/{id}", models.UpdateBookapi).Methods("POST")
-	r.HandleFunc("/books/{id}", models.DeleteBookapi).Methods("DELETE")
+	r.HandleFunc("/books/create", models.CreateNewBookapi).Methods("POST")
+	r.HandleFunc("/books", models.GetAllBooksapi).Methods("GET")
+	r.HandleFunc("/books/{id}", models.GetSingleBookapi).Methods("GET")
+	r.HandleFunc("/books/{id}", models.UpdateExistingBookapi).Methods("POST")
+	r.HandleFunc("/books/{id}", models.DeletePreviousBookapi).Methods("DELETE")
 }

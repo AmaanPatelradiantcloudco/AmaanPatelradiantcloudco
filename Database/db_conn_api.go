@@ -22,7 +22,7 @@ func InitialMigration() { //here we are creating function initialmigration which
 		println("Please check the connection")
 
 	}
-	DB.AutoMigrate(&models.Author{}, &models.Book{}, &models.User{}) //here we are taking the automigrate which is there inbuilt in
+	DB.AutoMigrate(&models.Authorapi{}, &models.Book{}, &models.User{}) //here we are taking the automigrate which is there inbuilt in
 	//migrator.go-this is from gorm package
 }
 
